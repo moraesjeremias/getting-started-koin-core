@@ -15,88 +15,81 @@ dependencies {
 }
 ----
 
-== Declaring our first dependencies
+== Target
 
-Let's create a Repository to provide some data (`giveHello()`):
+This getting started tutorial makes you write simple components and wire
+them in a simple & pure Kotlin app.
 
-{% highlight kotlin %}
-interface Repository {
-    fun giveHello()
+The idea is to wire some components and inject them in an Application class.
+
+== Data & Service components
+
+Let's create a `HelloModel` data class to provide simple data:
+
+.HelloModel.kt
+[source,kotlin]
+----
+data class HelloModel(val message : String = "Hello Koin!")
+----
+
+Let's create a service to use our `HelloModel`. Let's write `HelloServiceImpl` class and its interface `HelloService`:
+
+.HelloService.kt
+[source,kotlin]
+----
+// Service interface
+interface HelloService {
+    fun hello(): String
 }
 
-class MyRepository() : Repository {
-    override fun giveHello() = "Hello Koin"
+// service class with injected helloModel instance
+class HelloServiceImpl(private val helloModel: HelloModel) : HelloService {
+
+    override fun hello() = "Hello ${helloModel.message}"
 }
-{% endhighlight %}
+----
 
-A Presenter class, for consuming this data:
 
-{% highlight kotlin %}
-// Use Repository - injected by constructor by Koin
-class MyPresenter(val repository : Repository){
-    fun sayHello() = repository.giveHello()
+== A simple application
+
+To retrieve our `HelloService` component, we need to create a Koin runtime component. Let's write a `HelloApplication` class, and tag it with `KoinComponent` interface. This will later allows us to use the `by inject()` operators, to retrieve our component: 
+
+.HelloApplication.kt
+[source,kotlin]
+----
+class HelloApplication : KoinComponent {
+
+    // Inject service
+    val helloService by inject<HelloService>()
+
+    fun sayHello() = println(helloService.hello())
 }
-{% endhighlight %}
+----
 
-Use the `applicationContext` function to declare a module. Let's declare our first component:
 
-{% highlight kotlin %}
-// Koin module
-val myModule : Module = applicationContext {
-    provide { MyPresenter(get()) } // get() will resolve Repository instance
-    provide { MyRepository() as Repository }
+== Declaring dependencies & Start Koin
+
+.module.kt
+[source,kotlin]
+----
+val helloModule = module {
+    single { HelloModel() }
+    single { HelloServiceImpl(get()) as HelloService }
 }
-{% endhighlight %}
+----
 
-## Start Koin
+Let's start our app from a `main` function:
 
-Now that we have a module, let's start Koin. Open `main` function, or write one. Just call the `startKoin()` function:
-
-{% highlight kotlin %}
-fun main(vararg args : String){
-    // Start Koin
-    startKoin(listOf(myModule))
+.HelloApplication.kt
+[source,kotlin]
+----
+fun main(vararg args: String) {
+    startKoin(listOf(helloModule))
+    HelloApplication().sayHello()
 }
-{% endhighlight %}
+----
 
-That's it, Koin is running in your app! 
-
-## Writing the application
-
-To retrieve our `MyPresenter` component, we need to create a Koin runtime component. Let's write a `MyApplication` class, and extend it with `KoinComponent` interface. This latter allows us to use the `by inject()` operators: 
-
-{% highlight kotlin %}
-// Application
-class MyApplication : KoinComponent {
-
-    // Inject MyPresenter
-    val presenter : MyPresenter by inject()
-
-    init {
-        // Let's use our presenter
-        Log.i("MyActivity","presenter : ${presenter.sayHello()}")
-    }
-}
-{% endhighlight %}
-
-Let's update our `main` function, to launch the `MyApplication` class:
-
-{% highlight kotlin %}
-fun main(vararg args : String){
-    // Start Koin
-    startKoin(this, listOf(myModule))
-    // Launch app
-    MyApplication()
-}
-{% endhighlight %}
 
 == What's Next?
 
-You have finished this starting tutorial. Below are some topics for further reading:
 
-- [Declaring components with The Koin DSL]({{ site.baseurl }}/docs/{{ site.docs_version }}/reference/koin-dsl#provide-definitions)
-- [Provide aliases - bean, factory & provide]({{ site.baseurl }}/docs/{{ site.docs_version }}/reference/koin-dsl#aliases-bean-factory-)
-- [Named dependencies]({{ site.baseurl }}/docs/{{ site.docs_version }}/reference/koin-dsl/#named-dependencies)
-- [Import & Multiple module declaration]({{ site.baseurl }}/docs/{{ site.docs_version }}/reference/koin-dsl#linking-definitions---using-definitions-in-several-modules)
-- [Using properties]({{ site.baseurl }}/docs/{{ site.docs_version }}/reference/properties/)
-- [Checking your modules configuration with Dry Run]({{ site.baseurl }}/docs/{{ site.docs_version }}/reference/dry-run/)
