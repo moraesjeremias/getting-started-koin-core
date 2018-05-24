@@ -10,12 +10,10 @@ class HelloApplication : KoinComponent {
     // Inject service
     val helloService by inject<HelloService>()
 
-    init {
-        println(helloService.hello())
-    }
+    fun sayHello() = println(helloService.hello())
 }
 
 fun main(vararg args: String) {
     startKoin(listOf(helloModule))
-    HelloApplication()
+    HelloApplication().sayHello()
 }

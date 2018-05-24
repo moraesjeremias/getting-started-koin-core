@@ -20,6 +20,8 @@ class HelloAppTest : AutoCloseKoinTest() {
     @Test
     fun tesKoinComponents() {
         val helloApp = HelloApplication()
+        helloApp.sayHello()
+
         assertEquals(service, helloApp.helloService)
         assertEquals("Hello ${model.message}", service.hello())
     }

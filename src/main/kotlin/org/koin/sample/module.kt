@@ -1,9 +1,9 @@
 package org.koin.sample
 
-import org.koin.dsl.module.applicationContext
+import org.koin.dsl.module.module
 
 // Koin module
-val helloModule = applicationContext {
-    bean { HelloModel() }
-    bean { HelloServiceImpl(get()) as HelloService }
+val helloModule = module {
+    single { HelloModel() }
+    single { HelloServiceImpl(get()) as HelloService }
 }
