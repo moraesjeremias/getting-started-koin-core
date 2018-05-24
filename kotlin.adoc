@@ -1,16 +1,10 @@
----
-layout: docs
-title: Getting started with Kotlin
-description: Let's start with a standalone Kotlin app
-group: getting-started
-toc: true
----
-
-## Gradle Setup
+== Gradle Setup
 
 First, add the Koin dependency like below:
 
-{% highlight gradle %}
+.build.gradle
+[source,gradle]
+----
 // Add Jcenter to your repositories if needed
 repositories {
     jcenter()    
@@ -19,9 +13,9 @@ dependencies {
     // Koin for Kotlin apps
     compile 'org.koin:koin-core:{{ site.current_version }}'
 }
-{% endhighlight %}
+----
 
-## Declaring our first dependencies
+== Declaring our first dependencies
 
 Let's create a Repository to provide some data (`giveHello()`):
 
@@ -96,7 +90,7 @@ fun main(vararg args : String){
 }
 {% endhighlight %}
 
-## What's Next?
+== What's Next?
 
 You have finished this starting tutorial. Below are some topics for further reading:
 
