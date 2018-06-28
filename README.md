@@ -12,7 +12,10 @@ This tutorial lets you write a Kotlin application and use Koin inject and retrie
 
 ## Github & Sources
 
-You can checkout the project directly from [https://github.com/InsertKoinIO/getting-started-koin-core](https://github.com/InsertKoinIO/getting-started-koin-core) or download the [zip](https://github.com/InsertKoinIO/getting-started-koin-core/archive/master.zip)
+<div class="alert alert-secondary" role="alert">
+    You can checkout the project directly from <a href="https://github.com/InsertKoinIO/getting-started-koin-core">Github</a> or download the <a href="https://github.com/InsertKoinIO/getting-started-koin-core/archive/master.zip">zip</a>
+</div>
+
 
 ## Setup
 
