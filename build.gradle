@@ -1,4 +1,6 @@
 apply from: "versions.gradle"
+apply from: "doc.gradle"
+
 apply plugin: 'kotlin'
 
 buildscript {
@@ -7,12 +9,15 @@ buildscript {
         jcenter()
     }
     dependencies {
+        // AsciiDoc
+        classpath "org.asciidoctor:asciidoctor-gradle-plugin:$asciidoctor_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 group 'org.koin.sample'
 version '1.0-SNAPSHOT'
+
 sourceCompatibility = 1.8
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"

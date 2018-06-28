@@ -4,6 +4,6 @@ import org.koin.dsl.module.module
 
 // Koin module
 val helloModule = module {
-    single { HelloModel() }
+    single { HelloMessageData() }
     single { HelloServiceImpl(get()) as HelloService }
 }

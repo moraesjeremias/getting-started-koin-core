@@ -9,7 +9,7 @@ import org.koin.test.AutoCloseKoinTest
 
 class HelloAppTest : AutoCloseKoinTest() {
 
-    val model by inject<HelloModel>()
+    val model by inject<HelloMessageData>()
     val service by inject<HelloService>()
 
     @Before
@@ -23,6 +23,6 @@ class HelloAppTest : AutoCloseKoinTest() {
         helloApp.sayHello()
 
         assertEquals(service, helloApp.helloService)
-        assertEquals("Hello ${model.message}", service.hello())
+        assertEquals("Hey, ${model.message}", service.hello())
     }
 }
