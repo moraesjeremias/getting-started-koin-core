@@ -21,10 +21,10 @@ This tutorial lets you write a Kotlin application and use Koin inject and retrie
 
 First, check that the `koin-core` dependency is added like below:
 
-```kotlin
+{% highlight gradle %}
 // Add Jcenter to your repositories if needed
 repositories {
-    jcenter()    
+    jcenter()
 }
 dependencies {
     // Koin for Kotlin apps
@@ -32,7 +32,7 @@ dependencies {
     // Testing
     testCompile 'org.koin:koin-test:{{ site.current_version }}'
 }
-```
+{% endhighlight %}
 
 ## The application
 
@@ -46,18 +46,18 @@ In our small app we need to have 2 components:
 
 Let's create a `HelloMessageData` data class to hold our data:
 
-```kotlin
+{% highlight kotlin %}
 /**
  * A class to hold our message data
  */
 data class HelloMessageData(val message : String = "Hello Koin!")
-```
+{% endhighlight %}
 
 ### Service
 
 Let's create a service to display our data from `HelloMessageData`. Let's write `HelloServiceImpl` class and its interface `HelloService`:
 
-```kotlin
+{% highlight kotlin %}
 /**
  * Hello Service - interface
  */
@@ -74,14 +74,14 @@ class HelloServiceImpl(private val helloMessageData: HelloMessageData) : HelloSe
 
     override fun hello() = "Hey, ${helloMessageData.message}"
 }
-```
+{% endhighlight %}
 
 
 ## The application class
 
 To run our `HelloService` component, we need to create a runtime component. Let's write a `HelloApplication` class and tag it with `KoinComponent` interface. This will later allows us to use the `by inject()` functions to retrieve our component:
 
-```kotlin
+{% highlight kotlin %}
 /**
  * HelloApplication - Application Class
  * use HelloService
@@ -94,20 +94,20 @@ class HelloApplication : KoinComponent {
     // display our data
     fun sayHello() = println(helloService.hello())
 }
-```
+{% endhighlight %}
 
 ## Declaring dependencies
 
 Now, let's assemble `HelloMessageData` with `HelloService`, with a Koin module:
 
-```kotlin
+{% highlight kotlin %}
 val helloModule = module {
 
     single { HelloMessageData() }
 
     single { HelloServiceImpl(get()) as HelloService }
 }
-```
+{% endhighlight %}
 
 We declare each component as `single`, as singleton instances.
 
@@ -118,7 +118,7 @@ We declare each component as `single`, as singleton instances.
 
 Just start our app from a `main` function:
 
-```kotlin
+{% highlight kotlin %}
 fun main(vararg args: String) {
 
     startKoin(listOf(helloModule))
@@ -126,7 +126,7 @@ fun main(vararg args: String) {
     HelloApplication().sayHello()
 }
 
-```
+{% endhighlight %}
 
 ## What's next?
 
