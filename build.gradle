@@ -1,5 +1,4 @@
 apply from: "versions.gradle"
-apply from: "doc.gradle"
 
 apply plugin: 'kotlin'
 

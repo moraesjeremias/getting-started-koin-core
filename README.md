@@ -96,7 +96,7 @@ class HelloApplication : KoinComponent {
 }
 ```
 
-== Declaring dependencies
+## Declaring dependencies
 
 Now, let's assemble `HelloMessageData` with `HelloService`, with a Koin module:
 

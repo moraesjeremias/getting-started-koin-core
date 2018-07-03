@@ -1,7 +1,0 @@
-// asciidoctor
-apply plugin: 'org.asciidoctor.convert'
-
-asciidoctor {
-    sourceDir = file('./')
-    backends = ["html5"]
-}
