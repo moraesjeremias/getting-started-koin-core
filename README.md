@@ -10,12 +10,19 @@ toc: true
 
 This tutorial lets you write a Kotlin application and use Koin inject and retrieve your components.
 
-## Github & Sources
+## Get the code
 
-<div class="alert alert-secondary" role="alert">
-    You can checkout the project directly from <a href="https://github.com/InsertKoinIO/getting-started-koin-core">Github</a> or download the <a href="https://github.com/InsertKoinIO/getting-started-koin-core/archive/master.zip">zip</a>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      Checkout the project directly on Github or download the zip file
+    </div>
+    <div class="col">
+      <a href="https://github.com/InsertKoinIO/getting-started-koin-core" class="btn btn-outline-primary mb-3 mb-md-0 mr-md-3">Go to Github</a>
+      <a href="https://github.com/InsertKoinIO/getting-started-koin-core/archive/master.zip" class="btn btn-outline-info mb-3 mb-md-0 mr-md-3">Download Zip</a>
+    </div>
+  </div>
 </div>
-
 
 ## Setup
 
@@ -24,7 +31,7 @@ First, check that the `koin-core` dependency is added like below:
 {% highlight gradle %}
 // Add Jcenter to your repositories if needed
 repositories {
-    jcenter()
+    jcenter()    
 }
 dependencies {
     // Koin for Kotlin apps
