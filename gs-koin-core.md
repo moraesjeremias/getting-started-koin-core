@@ -140,3 +140,9 @@ fun main(vararg args: String) {
 * Check the [DSL quick references]({{ site.baseurl }}/docs/{{ site.docs_version }}/quick-references/koin-dsl/)
 * Check the [Core features quick references]({{ site.baseurl }}/docs/{{ site.docs_version }}/quick-references/koin-core/)
 * Read the [full documentation]({{ site.baseurl }}/docs/{{ site.docs_version }}/documentation/reference/index.html)
+
+Also other getting started project:
+
+* [Getting started Android]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/android/)
+* [Getting started Ktor]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/ktor/)
+* [Getting started Spark]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/spark/)
