@@ -2,15 +2,15 @@ package org.koin.sample
 
 import org.junit.Test
 import org.koin.test.AutoCloseKoinTest
-import org.koin.test.check
+import org.koin.test.checkModules
 
 /**
  * Dry run configuration
  */
-class DryRunTest : AutoCloseKoinTest() {
+class CheckModulesTest : AutoCloseKoinTest() {
 
     @Test
     fun dryRunTest() {
-        check(listOf(helloModule))
+        checkModules(listOf(helloModule))
     }
 }

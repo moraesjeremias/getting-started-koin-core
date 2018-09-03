@@ -8,8 +8,6 @@ buildscript {
         jcenter()
     }
     dependencies {
-        // AsciiDoc
-        classpath "org.asciidoctor:asciidoctor-gradle-plugin:$asciidoctor_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -32,8 +30,6 @@ dependencies {
     // Koin
     compile "org.koin:koin-core:$koin_version"
     testCompile "org.koin:koin-test:$koin_version"
-    
-    testCompile "org.mockito:mockito-core:$mockito_version"
 }
 
 repositories {
