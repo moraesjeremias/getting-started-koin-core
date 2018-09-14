@@ -11,7 +11,7 @@ import org.koin.standalone.inject
 class HelloApplication : KoinComponent {
 
     // Inject HelloService
-    val helloService by inject<HelloService>()
+    val helloService : HelloService by inject()
 
     // display our data
     fun sayHello() = println(helloService.hello())
