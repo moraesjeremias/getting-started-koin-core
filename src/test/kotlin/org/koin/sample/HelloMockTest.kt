@@ -2,10 +2,10 @@ package org.koin.sample
 
 import org.junit.Before
 import org.junit.Test
-import org.koin.standalone.StandAloneContext.startKoin
-import org.koin.standalone.inject
+import org.koin.core.context.startKoin
 import org.koin.test.AutoCloseKoinTest
-import org.koin.test.declareMock
+import org.koin.test.inject
+import org.koin.test.mock.declareMock
 import org.mockito.Mockito
 
 class HelloMockTest : AutoCloseKoinTest() {
@@ -14,7 +14,9 @@ class HelloMockTest : AutoCloseKoinTest() {
 
     @Before
     fun before() {
-        startKoin(listOf())
+        startKoin {
+            modules(helloModule)
+        }
         declareMock<HelloService>()
     }
 

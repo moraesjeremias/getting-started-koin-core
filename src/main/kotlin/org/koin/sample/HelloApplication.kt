@@ -1,8 +1,8 @@
 package org.koin.sample
 
-import org.koin.standalone.KoinComponent
-import org.koin.standalone.StandAloneContext.startKoin
-import org.koin.standalone.inject
+import org.koin.core.KoinComponent
+import org.koin.core.context.startKoin
+import org.koin.core.inject
 
 /**
  * HelloApplication - Application Class
@@ -11,7 +11,7 @@ import org.koin.standalone.inject
 class HelloApplication : KoinComponent {
 
     // Inject HelloService
-    val helloService : HelloService by inject()
+    val helloService: HelloService by inject()
 
     // display our data
     fun sayHello() = println(helloService.hello())
@@ -22,7 +22,9 @@ class HelloApplication : KoinComponent {
  */
 fun main(vararg args: String) {
 
-    startKoin(listOf(helloModule))
-
+    startKoin {
+        logger()
+        modules(helloModule)
+    }
     HelloApplication().sayHello()
 }

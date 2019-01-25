@@ -1,8 +1,10 @@
 package org.koin.sample
 
 import org.junit.Test
+import org.koin.core.logger.Level
+import org.koin.dsl.koinApplication
 import org.koin.test.AutoCloseKoinTest
-import org.koin.test.checkModules
+import org.koin.test.check.checkModules
 
 /**
  * Dry run configuration
@@ -11,6 +13,9 @@ class CheckModulesTest : AutoCloseKoinTest() {
 
     @Test
     fun dryRunTest() {
-        checkModules(listOf(helloModule))
+        koinApplication {
+            logger(Level.DEBUG)
+            modules(helloModule)
+        }.checkModules()
     }
 }
