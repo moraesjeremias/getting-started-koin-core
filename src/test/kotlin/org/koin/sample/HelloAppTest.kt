@@ -3,9 +3,9 @@ package org.koin.sample
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import org.koin.standalone.StandAloneContext.startKoin
-import org.koin.standalone.inject
+import org.koin.core.context.startKoin
 import org.koin.test.AutoCloseKoinTest
+import org.koin.test.inject
 
 class HelloAppTest : AutoCloseKoinTest() {
 
@@ -14,7 +14,9 @@ class HelloAppTest : AutoCloseKoinTest() {
 
     @Before
     fun before() {
-        startKoin(listOf(helloModule))
+        startKoin {
+            modules(helloModule)
+        }
     }
 
     @Test
