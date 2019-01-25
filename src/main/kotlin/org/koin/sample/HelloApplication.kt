@@ -3,6 +3,7 @@ package org.koin.sample
 import org.koin.core.KoinComponent
 import org.koin.core.context.startKoin
 import org.koin.core.inject
+import org.koin.core.logger.Level
 
 /**
  * HelloApplication - Application Class
