@@ -14,7 +14,7 @@ class CheckModulesTest : AutoCloseKoinTest() {
     @Test
     fun dryRunTest() {
         koinApplication {
-            logger(Level.DEBUG)
+            printLogger(Level.DEBUG)
             modules(helloModule)
         }.checkModules()
     }

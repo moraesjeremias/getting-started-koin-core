@@ -21,10 +21,10 @@ class HelloApplication : KoinComponent {
 /**
  * run app from here
  */
-fun main(vararg args: String) {
+fun main() {
 
     startKoin {
-        logger()
+        printLogger()
         modules(helloModule)
     }
     HelloApplication().sayHello()
