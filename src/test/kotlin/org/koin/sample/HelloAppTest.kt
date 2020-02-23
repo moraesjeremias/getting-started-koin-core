@@ -1,10 +1,10 @@
 package org.koin.sample
 
 import org.junit.Assert.assertEquals
-import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
-import org.koin.core.context.startKoin
 import org.koin.test.AutoCloseKoinTest
+import org.koin.test.KoinTestRule
 import org.koin.test.inject
 
 class HelloAppTest : AutoCloseKoinTest() {
@@ -12,15 +12,13 @@ class HelloAppTest : AutoCloseKoinTest() {
     val model by inject<HelloMessageData>()
     val service by inject<HelloService>()
 
-    @Before
-    fun before() {
-        startKoin {
-            modules(helloModule)
-        }
+    @get:Rule
+    val koinTestRule = KoinTestRule.create {
+        modules(helloModule)
     }
 
     @Test
-    fun tesKoinComponents() {
+    fun `unit test`() {
         val helloApp = HelloApplication()
         helloApp.sayHello()
 
